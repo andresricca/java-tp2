@@ -98,6 +98,9 @@ public class CtrlCombate implements Serializable {
 		if(finCombate) {
 			throw new ApplicationException("El combate ha finalizado");
 		}
+		if(puntos<=0) {
+			throw new ApplicationException("Los puntos asignados al ataque deben ser mayores que cero");
+		}
 		if(puntos>jugadorAtaca.getEnergiaRestante()) {
 			throw new ApplicationException("Los puntos para el ataque superan la cantidad de puntos disponibles");
 		}

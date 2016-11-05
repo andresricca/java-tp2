@@ -2,6 +2,7 @@
     <wb-module deploy-name="java-tp2">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/configs"/>
         <property name="context-root" value="java-tp2"/>
         <property name="java-output-path" value="/java-tp2/build/classes"/>
     </wb-module>

@@ -28,12 +28,14 @@ public class Atacar extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int puntosAtaque=Integer.parseInt(request.getParameter("PuntosAtaque"));
 		CtrlCombate ctrl=(CtrlCombate) request.getSession(false).getAttribute("ctrlCombate");
 		try {
+			int puntosAtaque=Integer.parseInt(request.getParameter("PuntosAtaque"));
 			ctrl.atacar(puntosAtaque);
 		} catch (ApplicationException ae) {
 			request.setAttribute("Error", ae.getMessage());
+		} catch (Exception e) {
+			request.setAttribute("Error", "Los puntos de ataque deben ser un numero entero");
 		}
 		if(ctrl.getFinCombate()) {
 			request.setAttribute("Ganador", ctrl.getTurno().toString());
