@@ -45,7 +45,8 @@ public class SeleccionPersonaje extends HttpServlet {
 			session.setAttribute("ctrlCombate", ctrl);
 			request.getRequestDispatcher("juego.jsp").forward(request, response);
 		} catch (ApplicationException ae) {
-			response.sendRedirect("index.html");
+			request.setAttribute("Error", ae.getMessage());
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 		}
 		
 	}

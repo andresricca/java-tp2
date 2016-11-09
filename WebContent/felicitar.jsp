@@ -32,7 +32,7 @@
       	Ha ganado <%= request.getAttribute("Ganador") %>!!!
       </h1>
       <hr>
-      <a href="index.html">Volver a selección de personaje</a>
+      <a href="index.jsp">Volver a selección de personaje</a>
 
     </div> <!-- /container -->
 

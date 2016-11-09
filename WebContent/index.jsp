@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,7 +11,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>SelecciÃ³n de personajes</title>
+    <title>Selección de personajes</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -43,6 +45,12 @@
       </form>
 
     </div> <!-- /container -->
+    
+    <div align="center" class="error">
+	<% 	String mensaje="";
+		if(request.getAttribute("Error")!=null) mensaje=(String)request.getAttribute("Error");  %>
+	<%= mensaje %>
+	</div>
 
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
