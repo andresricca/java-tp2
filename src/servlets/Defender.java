@@ -6,7 +6,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import negocio.CtrlCombate;
 import utils.ApplicationException;
@@ -30,12 +29,14 @@ public class Defender extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session=request.getSession(false);
+		CtrlCombate ctrl=(CtrlCombate) request.getSession(false).getAttribute("ctrlCombate");
+		
 		try {
-			((CtrlCombate) session.getAttribute("ctrlCombate")).defender();
+			ctrl.defender();
 		} catch (ApplicationException ae) {
 			request.setAttribute("Error", ae.getMessage());
 		}
+		
 		request.getRequestDispatcher("juego.jsp").forward(request, response);
 	}
 

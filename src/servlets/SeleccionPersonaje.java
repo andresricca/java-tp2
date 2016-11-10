@@ -39,6 +39,7 @@ public class SeleccionPersonaje extends HttpServlet {
 		jugador2.setNombre(nombreJugador2);
 		
 		CtrlCombate ctrl=new CtrlCombate();
+		
 		try {
 			ctrl.nuevoCombate(jugador1, jugador2);
 			HttpSession session=request.getSession(true);
