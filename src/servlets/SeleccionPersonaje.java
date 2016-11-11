@@ -6,7 +6,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import entidades.Personaje;
 import negocio.CtrlCombate;
@@ -42,8 +41,7 @@ public class SeleccionPersonaje extends HttpServlet {
 		
 		try {
 			ctrl.nuevoCombate(jugador1, jugador2);
-			HttpSession session=request.getSession(true);
-			session.setAttribute("ctrlCombate", ctrl);
+			request.getSession(true).setAttribute("ctrlCombate", ctrl);
 			request.getRequestDispatcher("juego.jsp").forward(request, response);
 		} catch (ApplicationException ae) {
 			request.setAttribute("Error", ae.getMessage());
