@@ -97,31 +97,27 @@ public class CtrlCombate implements Serializable {
 	public void atacar(int puntos) throws ApplicationException {
 		if(finCombate) {
 			throw new ApplicationException("El combate ha finalizado");
-		}
-		if(puntos<=0) {
-			throw new ApplicationException("Los puntos asignados al ataque deben ser mayores que cero");
-		}
-		if(puntos>jugadorAtaca.getEnergiaRestante()) {
-			throw new ApplicationException("Los puntos para el ataque superan la cantidad de puntos disponibles");
-		}
-		jugadorAtaca.realizarAtaque(puntos);
-		jugadorRecibe.recibirAtaque(puntos);
-		if(jugadorRecibe.getVidaRestante()<=0) {
-			finCombate=true;
-			jugadorAtaca.recibirPremio();
-			dataPersonaje.update(jugadorAtaca);
-		}
-		if(!finCombate) {
-			cambiarTurno();
+		} else {
+			jugadorAtaca.realizarAtaque(puntos);
+			jugadorRecibe.recibirAtaque(puntos);
+			if(jugadorRecibe.getVidaRestante()<=0) {
+				finCombate=true;
+				jugadorAtaca.recibirPremio();
+				dataPersonaje.update(jugadorAtaca);
+			}
+			if(!finCombate) {
+				cambiarTurno();
+			}
 		}
 	}
 	
 	public void defender() throws ApplicationException {
 		if(finCombate) {
 			throw new ApplicationException("El combate ha finalizado");
+		} else {
+			jugadorAtaca.defiende();
+			cambiarTurno();
 		}
-		jugadorAtaca.defiende();
-		cambiarTurno();
 	}
 
 }

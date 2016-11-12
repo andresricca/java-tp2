@@ -110,8 +110,16 @@ public class Personaje {
 	
 	
 	
-	public void realizarAtaque(int puntos) {
-		usoEnergia+=puntos;
+	public void realizarAtaque(int puntos) throws ApplicationException {
+		if(puntos<=0) {
+			throw new ApplicationException("Los puntos asignados al ataque deben ser mayores que cero");
+		} else {
+			if(puntos>getEnergiaRestante()) {
+				throw new ApplicationException("Los puntos para el ataque superan la cantidad de puntos disponibles");
+			} else {
+				usoEnergia+=puntos;
+			}
+		}
 	}
 	
 	public void recibirAtaque(int puntos) {
